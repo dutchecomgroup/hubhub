@@ -3,8 +3,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-import { LayoutDashboard, Zap, Shield, User, Settings } from "lucide-react";
+import { LayoutDashboard, Zap, Shield, User, Settings, LogOut } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { signOut } from "next-auth/react";
 
 const navItems = [
     { name: "Hubs", href: "/", icon: LayoutDashboard },
@@ -53,6 +54,14 @@ export function MainNav() {
 
             <button className="p-2.5 rounded-xl text-white/40 hover:text-white hover:bg-white/5 transition-all">
                 <Settings className="w-4 h-4" />
+            </button>
+
+            <button
+                onClick={() => signOut()}
+                className="p-2.5 rounded-xl text-white/40 hover:text-red-400 hover:bg-red-500/10 transition-all"
+                title="Uitloggen"
+            >
+                <LogOut className="w-4 h-4" />
             </button>
         </nav>
     );
